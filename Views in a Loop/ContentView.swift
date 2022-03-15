@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    let Fruits = ["Apple", "Grapes", "Kiwi"]
+    @State private var selectedFruits = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Picker("Select your favorite fruit", selection: $selectedFruits) {
+                ForEach(0 ..< Fruits.count) {
+                    Text(self.Fruits[$0])
+                }
+            }
+        Text("You chose was: \(Fruits[selectedFruits])")
     }
 }
-
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
